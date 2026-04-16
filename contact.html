@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | CraveandCreme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --pink-light: #f8c8dc;
+            --cream: #fff5e1;
+            --soft-rose: #ff8fb1;
+            --deep-rose: #e75480;
+            --text-dark: #4a3728;
+            --text-light: #8b7355;
+            --white: #ffffff;
+            --glass-white: rgba(255, 255, 255, 0.85);
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 12px 40px rgba(231, 84, 128, 0.2);
+            --radius-card: 20px;
+            --radius-btn: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--deep-rose);
+        }
+
+        .nav-logo-icon { font-size: 32px; }
+        .nav-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover { background: var(--pink-light); color: var(--deep-rose); }
+        .nav-links a.active { background: var(--deep-rose); color: white; }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--soft-rose), var(--deep-rose)) !important;
+            color: white !important;
+            padding: 12px 28px !important;
+            box-shadow: 0 4px 15px rgba(231, 84, 128, 0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .contact-hero {
+            background: linear-gradient(135deg, var(--pink-light) 0%, var(--cream) 100%);
+            padding: 160px 40px 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff8fb1' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .contact-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-icon {
+            font-size: 72px;
+            margin-bottom: 24px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .contact-title {
+            font-size: clamp(36px, 5vw, 56px);
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .contact-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Main Content */
+        .contact-content {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* Info Cards */
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .info-card {
+            background: var(--glass-white);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-card);
+            padding: 32px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .info-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--soft-rose), var(--deep-rose));
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .info-content h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .info-content p {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .info-content a {
+            color: var(--deep-rose);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .info-content a:hover {
+            color: var(--soft-rose);
+            text-decoration: underline;
+        }
+
+        /* Hours Card Special */
+        .hours-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .hours-day {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .hours-time {
+            color: var(--text-light);
+            text-align: right;
+        }
+
+        /* Social Links */
+        .social-section {
+            margin-top: 16px;
+        }
+
+        .social-title {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            color: white;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            transform: translateY(-4px) scale(1.1);
+        }
+
+        .social-link.instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .social-link.facebook { background: #1877F2; }
+        .social-link.pinterest { background: #E60023; }
+        .social-link.tiktok { background: #000000; }
+
+        /* Contact Form */
+        .form-section {
+            background: var(--white);
+            border-radius: var(--radius-card);
+            padding: 48px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(248, 200, 220, 0.3);
+        }
+
+        .form-header {
+            margin-bottom: 36px;
+        }
+
+        .form-header h2 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-label span {
+            color: var(--deep-rose);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--pink-light);
+            border-radius: var(--radius-btn);
+            font-size: 15px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--deep-rose);
+            box-shadow: 0 0 0 4px rgba(231, 84, 128, 0.1);
+        }
+
+        textarea.form-input {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .form-row { grid-template-columns: 1fr; }
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--soft-rose), var(--deep-rose));
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            border-radius: var(--radius-btn);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 4px 20px rgba(231, 84, 128, 0.4);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(231, 84, 128, 0.5);
+        }
+
+        .btn-submit:active {
+            transform: translateY(-1px);
+        }
+
+        /* Map Section */
+        .map-section {
+            margin-top: 80px;
+        }
+
+        .map-card {
+            background: var(--glass-white);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-card);
+            padding: 32px;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .map-icon {
+            font-size: 64px;
+            flex-shrink: 0;
+        }
+
+        .map-info h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .map-info p {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .map-info a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            color: var(--deep-rose);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .map-info a:hover {
+            color: var(--soft-rose);
+            gap: 12px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 80px;
+            padding: 80px 40px;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .faq-header h2 {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .faq-header p {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--radius-card);
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .faq-question {
+            padding: 24px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--deep-rose);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: var(--soft-rose);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 28px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 28px 24px;
+            max-height: 200px;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #27ae60;
+            color: white;
+            padding: 16px 32px;
+            border-radius: var(--radius-btn);
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 60px 40px 30px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .footer-desc {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        .footer-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover { color: var(--soft-rose); }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--soft-rose);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar { padding: 12px 20px; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                gap: 8px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: block; }
+
+            .contact-hero { padding: 120px 20px 60px; }
+            .contact-content { padding: 40px 20px; }
+            .form-section { padding: 32px 24px; }
+            .info-card { padding: 24px; }
+            .faq-section { padding: 60px 20px; }
+            .footer-container { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .footer-brand { max-width: 100%; }
+            .footer-social { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Message sent successfully!</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">
+            <span class="nav-logo-icon">🎂</span>
+            <span class="nav-logo-text">CraveandCreme</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="create.html">Create</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+            <li><a href="create.html" class="nav-cta">Order Now</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="contact-hero-content">
+            <div class="contact-icon">💬</div>
+            <h1 class="contact-title">Get in Touch</h1>
+            <p class="contact-subtitle">Have questions about your order or want to discuss a custom design? We'd love to hear from you. Reach out and let's create something sweet together!</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="contact-content">
+        <div class="contact-grid">
+            <!-- Info Section -->
+            <div class="info-section">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Text Us</h3>
+                        <p>Quick and easy way to reach us</p>
+                        <p style="margin-top: 8px;">
+                            <a href="https://wa.me/1234567890" target="_blank">(123) 456-7890</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Email Us</h3>
+                        <p>Send us your questions anytime</p>
+                        <p style="margin-top: 8px;">
+                            <a href="mailto:hello@craveandcreme.com">hello@craveandcreme.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <div class="faq-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers to common questions</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How far in advance should I order?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    We recommend ordering at least 5-7 days in advance for standard custom cakes. For wedding cakes or elaborate designs, please contact us 2-4 weeks ahead to ensure we can bring your vision to life.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Do you offer tastings?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes! We offer complimentary tastings for wedding cakes and orders over $150. Schedule your tasting appointment by calling us or sending a message through our contact form.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Can I customize any design?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Absolutely! Our online cake builder covers most customization options. If you have a special request or unique design in mind, contact us and we'll work with you to create the perfect cake.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Do you deliver?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    We offer local delivery within 15 miles for a flat fee of $15. For weddings and large events, we provide setup and delivery services - contact us for a custom quote based on your needs.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What payment methods do you accept?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    We accept all major credit cards, Apple Pay, Google Pay, and cash. A 50% deposit is required to confirm custom cake orders, with the balance due upon pickup.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span>🎂</span>
+                    <span>CraveandCreme</span>
+                </div>
+                <p class="footer-desc">Handcrafting custom cakes that make every celebration unforgettable. Made with love, delivered with care.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="create.html">Design Cake</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Custom Cakes</a></li>
+                    <li><a href="#">Wedding Cakes</a></li>
+                    <li><a href="#">Special Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i> Text Us</a></li>
+                    <li><a href="mailto:hello@craveandcreme.com"><i class="fas fa-envelope"></i> hello@craveandcreme.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CraveandCreme. All rights reserved. Baked with ❤️</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // FAQ toggle
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            
+            // Open clicked if wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // Form submission
+        function submitForm(event) {
+            event.preventDefault();
+            
+            // Show success toast
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = 'Message sent successfully! We\'ll reply soon.';
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+
+            // Reset form
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
