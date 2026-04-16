@@ -204,3 +204,4 @@ Thank you! 🧁
 - JavaScript for step management and state
 - CSS Grid/Flexbox for layouts
 - Intersection Observer for scroll effects (if needed)
+
