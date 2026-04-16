@@ -310,6 +310,7 @@
         /* Features Section */
         .features {
             padding: 100px 40px;
+            background: var(--cream);
             position: relative;
             z-index: 1;
         }
@@ -352,6 +353,10 @@
             margin: 0 auto;
         }
 
+        .custom-section .features-grid {
+            max-width: 800px;
+        }
+
         .feature-card {
             background: var(--glass-white);
             backdrop-filter: blur(20px);
@@ -392,6 +397,73 @@
             z-index: 1;
         }
 
+        /* Custom Section */
+        .custom-section {
+            padding: 100px 40px;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--pink-light) 50%, var(--cream) 100%);
+            position: relative;
+            z-index: 1;
+        }
+
+        .custom-contact {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .custom-contact-text {
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .btn-whatsapp, .btn-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            margin: 0 8px;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1da851;
+            transform: translateY(-2px);
+        }
+
+        .btn-email {
+            background: var(--deep-rose);
+            color: white;
+        }
+
+        .btn-email:hover {
+            background: #d04570;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .btn-whatsapp, .btn-email {
+                display: block;
+                margin: 10px auto;
+                max-width: 250px;
+            }
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 40px;
+            background: var(--cream);
+            position: relative;
+            z-index: 1;
+        }
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -419,7 +491,14 @@
             box-shadow: var(--shadow-hover);
         }
 
-        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; font-size: 140px; }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-card);
+        }
+
+        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
 
         /* Testimonials */
         .testimonials {
@@ -858,6 +937,39 @@
         </div>
     </section>
 
+    <!-- Custom Cakes Section -->
+    <section class="custom-section">
+        <div class="section-header">
+            <div class="section-badge">
+                <i class="fas fa-magic"></i>
+                Custom Orders
+            </div>
+            <h2 class="section-title">Any Custom Cake You Want!</h2>
+            <p class="section-subtitle">Want a character cake, themed design, or something unique? Just contact us!</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🦄</div>
+                <h3 class="feature-title">Character Cakes</h3>
+                <p class="feature-desc">Spiderman, Batman, Frozen, Peppa Pig - you name it! We can create any character cake.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3 class="feature-title">Themed Designs</h3>
+                <p class="feature-desc">Sports, gaming, princesses, or any theme you have in mind - we'll bring it to life!</p>
+            </div>
+        </div>
+        <div class="custom-contact">
+            <p class="custom-contact-text">Contact us to discuss your custom cake idea:</p>
+            <a href="https://wa.me/16478197933" target="_blank" class="btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> Text: +1 647-819-7933
+            </a>
+            <a href="mailto:hello@craveandcreme.com" class="btn-email">
+                <i class="fas fa-envelope"></i> Email Us
+            </a>
+        </div>
+    </section>
+
     <!-- Gallery Section -->
     <section class="gallery">
         <div class="section-header">
@@ -869,11 +981,11 @@
             <p class="section-subtitle">A glimpse of the custom cakes we've brought to life for our happy customers.</p>
         </div>
         <div class="gallery-grid">
-            <div class="gallery-item">🎂</div>
-            <div class="gallery-item">🧁</div>
-            <div class="gallery-item">🎂</div>
-            <div class="gallery-item">🧁</div>
-            <div class="gallery-item">🎂</div>
+            <div class="gallery-item"><img src="cake5 (1).png" alt="Custom Cake" onerror="this.parentElement.innerHTML='🎂'"></div>
+            <div class="gallery-item"><img src="cake5 (2).png" alt="Custom Cake" onerror="this.parentElement.innerHTML='🧁'"></div>
+            <div class="gallery-item"><img src="cake5 (3).png" alt="Custom Cake" onerror="this.parentElement.innerHTML='🎂'"></div>
+            <div class="gallery-item"><img src="cake5 (4).png" alt="Custom Cake" onerror="this.parentElement.innerHTML='🧁'"></div>
+            <div class="gallery-item"><img src="cake5 (5).png" alt="Custom Cake" onerror="this.parentElement.innerHTML='🎂'"></div>
         </div>
     </section>
 
@@ -893,7 +1005,7 @@
                 <div class="testimonial-author">
                     <div class="testimonial-avatar">👩</div>
                     <div>
-                        <div class="testimonial-name">Dilraj S.</div>
+                        <div class="testimonial-name">Sophia G.</div>
                         <div class="testimonial-order">Custom Cake - 8"</div>
                         <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                     </div>
@@ -904,7 +1016,7 @@
                 <div class="testimonial-author">
                     <div class="testimonial-avatar">👨</div>
                     <div>
-                        <div class="testimonial-name">Reet S.</div>
+                        <div class="testimonial-name">Alfaaz S.</div>
                         <div class="testimonial-order">Birthday Cake - 6"</div>
                         <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                     </div>
@@ -970,7 +1082,7 @@
             <div class="footer-col">
                 <h4 class="footer-title">Contact</h4>
                 <ul class="footer-links">
-                    <li><a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i> Text Us</a></li>
+                    <li><a href="https://wa.me/16478197933" target="_blank"><i class="fab fa-whatsapp"></i> Text: +1 647-819-7933</a></li>
                     <li><a href="mailto:hello@craveandcreme.com"><i class="fas fa-envelope"></i> hello@craveandcreme.com</a></li>
                 </ul>
             </div>
@@ -1003,3 +1115,4 @@
     </script>
 </body>
 </html>
+
